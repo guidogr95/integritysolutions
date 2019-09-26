@@ -1,4 +1,15 @@
 
+// Page loading animation
+$(window).on('load', function() {
+	$("#preloader").animate({
+		'opacity': '0'
+	}, 600, function(){
+		setTimeout(function(){
+			$("#preloader").css("visibility", "hidden").fadeOut();
+		}, 300);
+	});
+});
+
 
 // sticky headers
 
@@ -262,16 +273,5 @@ $("footer .widget_photos img").not(".content .testimonial img, .hp-services img,
 
 });
 
-
-// Page loading animation
-$(window).on('load', function() {
-	$("#preloader").animate({
-		'opacity': '0'
-	}, 600, function(){
-		setTimeout(function(){
-			$("#preloader").css("visibility", "hidden").fadeOut();
-		}, 300);
-	});
-});
 
 
