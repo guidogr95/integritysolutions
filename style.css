@@ -148,52 +148,86 @@ preloader
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	align-items: center;
-	flex-direction: column;
-	-ms-flex-direction: column;
+	flex-direction: row;
+	-ms-flex-direction: row;
+	flex-wrap: wrap;
+	-ms-flex-wrap: wrap;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	justify-content: center;
 }
 .card4 {
 	display: flex;
 	display: -webkit-flex;
 	display: -ms-flexbox;
-	flex-direction: row;
-	-ms-flex-direction: row;
-	box-shadow: -2px 0 12px rgba(152, 152, 152, 0.8);
-	width: 880px;
+	
+	width: 423px;
+	
 	position: relative;
-	height: 250px;
-	overflow: hidden;
+	height: 550px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	
+	margin-top: 20px;
+	padding: 10px;
+}
+
+.card4-inner {
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	flex-direction: column;
+	-ms-flex-direction: column;
+	width: 100%;
 	border-radius: 9px;
 	background: #fcfcff;
-	margin-top: 20px;
-	border: 3px solid #fff;
+	box-shadow: -2px 0 12px rgba(152, 152, 152, 0.8);
+	overflow: hidden;
 }
-.container2>div:nth-child(odd) {
-	align-self: flex-start;
+
+.card4-img {
+	width: 100%;
+	height: 150px;
 }
-.container2>div:nth-child(even) {
-	align-self: flex-end;
-	margin-top: 40px;
-	margin-bottom: 20px;
+
+.bg1 {
+
+	background: url('/images/temp/card4img1mobile.jpg');
+	background-size: cover;
 }
-.container2 div:nth-child(odd) .card4-text {
-	position: absolute;
-	right: 0;
+
+.bg2 {
+	background: url('/images/temp/card4img2mobile.jpg');
+	background-size: cover;
 }
+
+.bg3 {
+	background: url('/images/temp/card4img3mobile.jpg');
+	background-size: cover;
+
+}
+
+
 .card4-text {
-	margin-right: 20px;
-	padding: 10px 0 0 5px;
+	padding: 10px 0 10px 5px;
+	height: 280px;
 }
-.card4-text h3 {
-	margin: 0;
-	font-size: 2em;
+
+.card4 h3 {
+	margin: 5px 0;
+	padding: 0 5px;
+	font-size: 1.7em;
 	font-family: 'Montserrat', 'Signika';
 	font-weight: bold;
+	padding-right: 5px;
 }
-.card4-text h3::after {
+.card4 h3::after {
 	content: '';
 	margin-top: 10px;
 	display: block;
-	height: 6px;
+	height: 2px;
 	width: 78px;
 	border-radius: 5px;
 	background: #032D51;
@@ -201,11 +235,15 @@ preloader
 .card4-text h4 {
 	margin: 10px 0;
 	color: #a6a6a6;
-	font-size: 1.3em;
+	font-size: 1.2em;
 }
+
+.card4-text p {
+	font-size: 1.1em;
+}
+
 .card4-text ul {
 	list-style: none;
-	font-size: 1.3em;
 }
 .card4-text ul li::before {
 	content: '\f105';
@@ -213,69 +251,7 @@ preloader
 	font-size: 1.2em;
 	margin-right: 10px;
 }
-.container2 div:nth-child(odd) .card4-img {
-	position: absolute;
-	bottom: 0;
-	left: -400px;
-	display: inline-block;
-	transform: skew(-10deg);
-	-webkit-transform: skew(-10deg);
-	-moz-transform: skew(-10deg);
-	-ms-transform: skew(-10deg);
-	-o-transform: skew(-10deg);
-	overflow: hidden;
-}
-.container2 div:nth-child(even) .card4-img {
-	position: absolute;
-	right: -414px;
-	bottom: 0;
-	height: 219%;
-	display: inline-block;
-	transform: skew(10deg);
-	-webkit-transform: skew(10deg);
-	-moz-transform: skew(10deg);
-	-ms-transform: skew(10deg);
-	-o-transform: skew(10deg);
-	overflow: hidden;
-}
-.container2 div:nth-child(1) .card4-img .bg {
-	display: block;
-	height: 601px;
-	width: 800px;
-	transform: skew(10deg);
-	-webkit-transform: skew(10deg);
-	-moz-transform: skew(10deg);
-	-ms-transform: skew(10deg);
-	-o-transform: skew(10deg);
-	background: url('images/temp/card4img1.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-.container2 div:nth-child(3) .card4-img .bg {
-	display: block;
-	height: 601px;
-	width: 800px;
-	transform: skew(10deg);
-	-webkit-transform: skew(10deg);
-	-moz-transform: skew(10deg);
-	-ms-transform: skew(10deg);
-	-o-transform: skew(10deg);
-	background: url('images/temp/card4img3.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-}
-.container2 div:nth-child(even) .card4-img .bg {
-	display: block;
-	height: 601px;
-	width: 800px;
-	transform: skew(-10deg);
-	-webkit-transform: skew(-10deg);
-	-moz-transform: skew(-10deg);
-	-ms-transform: skew(-10deg);
-	-o-transform: skew(-10deg);
-	background: url('images/temp/card4img2.jpg');
-	background-size: cover;
-}
+
 
 /*************/
 section.c5 {
@@ -441,7 +417,7 @@ section.c2 {
 }}
 .service-container .service-header .service-name > a {
 	transition: .6s ease-out;
-	font-size: 1.4em;
+	font-size: 1.2em;
 	font-family: "Signika", "Lato";
 	padding: 8px 30px 8px 14px;
 	color: #fff;
@@ -1911,94 +1887,6 @@ h2.alt span {display: inline-block; margin-bottom: -1px; padding: 10px 0; border
 	.service-container .seguridadvial .service-name h3,
 	.service-container .integritest .service-name h3 {
 		margin-top: 15px;
-	}
-}
-
-@media (max-width: 909px) {
-	.card4 {
-		height: 500px;
-		flex-direction: column-reverse;
-		width: 90%;
-	}
-	.container2>div:nth-child(odd),
-	.container2>div:nth-child(even) {
-		align-self: center;
-	}
-	.container2 div:nth-child(1) .card4-img .bg,
-	.container2 div:nth-child(2) .card4-img .bg,
-	.container2 div:nth-child(3) .card4-img .bg,
-	.container2 div:nth-child(odd) .card4-img,
-	.container2 div:nth-child(even) .card4-img {
-		transform: none;
-		-moz-transform: none;
-		-ms-transform: none;
-		-o-transform: none;
-		-webkit-transform: none;
-	}
-	
-	.container2 div:nth-child(3) .card4-img .bg {
-		background: url('images/temp/card4img3mobile.jpg');
-		background-repeat: no-repeat;
-		background-position: bottom;
-		background-size: cover;
-		width: 100%;
-		height: 100%;
-	}
-	.container2 div:nth-child(1) .card4-img .bg {
-		background: url('images/temp/card4img1mobile.jpg');
-		background-repeat: no-repeat;
-		background-position: bottom;
-		width: 100%;
-		height: 100%;
-	}
-	.container2 div:nth-child(even) .card4-img {
-		width: 100%;
-		height: 100%;
-		top: -260px;
-		left: 0;
-	}
-	.container2 div:nth-child(even) .card4-img .bg {
-		background: url('images/temp/card4img2mobile.jpg');
-		background-repeat: no-repeat;
-		background-position: bottom;
-		width: 100%;
-		height: 100%;
-	}
-	.container2 div:nth-child(odd) .card4-text {
-		left: 0;
-	}
-	.container2 div:nth-child(odd) .card4-img {
-		top: -260px;
-		bottom: unset;
-		width: 100%;
-		height: 100%;
-		left: 0;
-	}
-}
-@media (max-width: 566px) {
-	.card4 {
-		height: 600px;
-	}
-	.container2 div:nth-child(odd) .card4-img,
-	.container2 div:nth-child(even) .card4-img {
-		top: -300px;
-	}
-}
-@media (max-width: 411px) {
-	.card4 {
-		height: 650px;
-	}
-	.container2 div:nth-child(odd) .card4-img {
-		top: -325px;
-	}
-}
-@media (max-width: 393px) {
-	.card4 {
-		height: 650px;
-	}
-	.container2 div:nth-child(odd) .card4-img,
-	.container2 div:nth-child(even) .card4-img {
-		top: -375px;
 	}
 }
 
