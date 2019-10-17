@@ -185,6 +185,9 @@ preloader
 	background: #fcfcff;
 	box-shadow: -2px 0 12px rgba(152, 152, 152, 0.8);
 	overflow: hidden;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 }
 
 .card4-img {
@@ -216,6 +219,13 @@ preloader
 .card4-text {
 	padding: 10px 0 10px 5px;
 	height: 280px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.card4-text img {
+	width: 280px;
 }
 
 .card4 h3 {
@@ -393,6 +403,12 @@ section.c2 {
 	font-size: 2em;
 	font-weight: 500;
 }
+
+.s2 {
+	text-transform: capitalize;
+	font-size: 1.2em !important;
+}
+
 .service-container .service-header .service-name h3 span {
 	text-shadow: 5px 4px 3px rgba(0, 0, 0, 0.8);
 	font-size: 2.5rem;
