@@ -201,11 +201,14 @@ preloader
 .bg2 {
 	background: url('/images/temp/card4img2mobile.jpg');
 	background-size: cover;
+	
+	background-position: center;
 }
 
 .bg3 {
 	background: url('/images/temp/card4img3mobile.jpg');
 	background-size: cover;
+	background-position: center;
 
 }
 
