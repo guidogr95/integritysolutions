@@ -229,7 +229,7 @@ preloader
 	width: 100%;
 	border-radius: 9px;
 	background: #fcfcff;
-	box-shadow: -2px 0 12px rgba(152, 152, 152, 0.8);
+	box-shadow: 4px 4px 20px rgba(152,152,152,.3);
 	overflow: hidden;
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
