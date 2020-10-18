@@ -184,7 +184,7 @@ preloader
 
 .cert-section .cert-logos .col2 img {
 	filter: grayscale(100);
-	max-width: 317px;
+	max-width: 200px;
 	width: 100%;
 }
 
