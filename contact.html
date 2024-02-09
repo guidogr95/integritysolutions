@@ -122,15 +122,15 @@
 
 					<label>Nombre</label>
 
-					<input name="name" placeholder="" required>
+					<input id="name" name="name" placeholder="" required>
 
 					<label>Teléfono</label>
 
-					<input name="phone" type="tel" placeholder="" required>
+					<input id="phone" name="phone" type="tel" placeholder="" required>
 
 					<label>Email</label>
 
-					<input name="email" type="email" placeholder="" required>
+					<input id="email" name="email" type="email" placeholder="" required>
 
 
 
@@ -150,11 +150,14 @@
 
 					<label>Mensaje</label>
 
-					<textarea name="message" placeholder=""></textarea>
+					<textarea id="message" name="message" placeholder=""></textarea>
 
 							
-
-					<input id="submit" name="submit" type="submit" value="Enviar">
+					<div class="submit-btns">
+						<input id="submit" name="submit" type="submit" value="Enviar">
+	
+						<input id="submit" value="Contactar por WhatsApp" type="button" onclick="WpMessage()" >
+					</div>
 
 				</form>
 

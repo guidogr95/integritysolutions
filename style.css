@@ -2069,6 +2069,12 @@ h2.alt span {display: inline-block; margin-bottom: -1px; padding: 10px 0; border
 	margin: 3px 0;
 }
 
+.submit-btns {
+	display: flex;
+	flex-direction: column;
+	max-width: 180px;
+}
+
 
 /*AOS LIB
 Copyright michalsnik

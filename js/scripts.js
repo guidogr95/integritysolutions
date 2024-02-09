@@ -1,65 +1,49 @@
-
 // Page loading animation
-$(window).on('load', function() {
-	$("#preloader").animate({
-		'opacity': '0'
-	}, 600, function(){
-		setTimeout(function(){
-			$("#preloader").css("visibility", "hidden").fadeOut();
-		}, 300);
-	});
+$(window).on("load", function () {
+  $("#preloader").animate(
+    {
+      opacity: "0",
+    },
+    600,
+    function () {
+      setTimeout(function () {
+        $("#preloader").css("visibility", "hidden").fadeOut();
+      }, 300);
+    }
+  );
 });
-
 
 // sticky headers
 
-$(window).bind('scroll resize', function() {
+$(window).bind("scroll resize", function () {
+  if ($("body").width() > 355) {
+    var header = $(".root>header.sticky-enabled");
 
-	if($("body").width() > 355) {
+    var headerHeight = header.height();
 
-		var header = $(".root>header.sticky-enabled");
+    var scrollTop = $(window).scrollTop();
 
-		var headerHeight = header.height();
+    if (scrollTop > headerHeight) {
+      if (!header.hasClass("sticky")) {
+        header.addClass("sticky");
 
-		var scrollTop = $(window).scrollTop();
+        header.animate({ top: 0 }, 600);
 
-		if (scrollTop > headerHeight) {
+        $(".root").css("padding-top", headerHeight);
+      }
+    } else {
+      if (header.hasClass("sticky")) {
+        header.removeClass("sticky");
 
-			if (!header.hasClass('sticky')) {
+        header.removeAttr("style");
 
-				header.addClass('sticky');
-
-				header.animate({top: 0}, 600);
-
-				$('.root').css("padding-top", headerHeight);
-
-			}
-
-		} else {
-
-			if (header.hasClass('sticky')) {
-
-				header.removeClass('sticky');
-
-				header.removeAttr('style');
-
-				$('.root').removeAttr('style');
-
-			}
-
-		}
-
-	} else {
-
-		$('.root').css("padding-top", 0);
-
-	}
-
+        $(".root").removeAttr("style");
+      }
+    }
+  } else {
+    $(".root").css("padding-top", 0);
+  }
 });
-
-
-
-
 
 //logo for retina
 
@@ -87,16 +71,12 @@ $(window).bind('scroll resize', function() {
 
 });*/
 
-
-
 //get height of header for slide in menu on mobile
 
-function headerHeight(){
+function headerHeight() {
+  divHeight = $("section.main-header").height();
 
-	divHeight = $('section.main-header').height();
-
-	$('header nav:nth-of-type(2)').css({'top' : divHeight});
-
+  $("header nav:nth-of-type(2)").css({ top: divHeight });
 }
 
 //window.addEventListener('load', headerHeight);
@@ -105,173 +85,144 @@ function headerHeight(){
 
 //throttle scroll event listener
 
-window.addEventListener('scroll', throttle(headerHeight, 1000));
+window.addEventListener("scroll", throttle(headerHeight, 1000));
 
 //throttle function
 
 function throttle(fn, wait) {
-
   var time = Date.now();
 
-  return function() {
-
-    if ((time + wait - Date.now()) < 0) {
-
+  return function () {
+    if (time + wait - Date.now() < 0) {
       fn();
 
       time = Date.now();
-
     }
-
-  }
-
+  };
 }
-
-
 
 //get height for containers of absolute positioned items
 
-function absoluteHeight(){
+function absoluteHeight() {
+  imgHeight = $("span.clients1").height();
 
-	imgHeight = $('span.clients1').height();
+  toggleHeight = $(".fa").height();
 
-	toggleHeight = $('.fa').height();
+  toggleWidth = $(".fa").width();
 
-	toggleWidth = $('.fa').width();
+  //mapHeight = $('.map-responsive iframe').height();
 
-	//mapHeight = $('.map-responsive iframe').height();
+  serviceHeight1 = $(
+    ".service-container .service-header .service-name"
+  ).height();
 
-	serviceHeight1 = $('.service-container .service-header .service-name').height();
+  serviceHeight = serviceHeight1 + 55;
 
-	serviceHeight = serviceHeight1 + 55;
+  $("div.slider4>div").css({ height: imgHeight });
 
-	$('div.slider4>div').css({'height' : imgHeight});
+  $(".menu-toggle").css({ height: toggleHeight, width: toggleWidth });
 
-	$('.menu-toggle').css({'height' : toggleHeight, 'width' : toggleWidth});
+  //$('.map-responsive').css({'height' : mapHeight});
 
-	//$('.map-responsive').css({'height' : mapHeight});
-
-	$('.service-container .service-header').css({'height' : serviceHeight});
-
+  $(".service-container .service-header").css({ height: serviceHeight });
 }
 
-window.addEventListener('load', absoluteHeight);
+window.addEventListener("load", absoluteHeight);
 
-window.addEventListener('resize', throttle(absoluteHeight, 1000));
+window.addEventListener("resize", throttle(absoluteHeight, 1000));
 
-//menu toggle 
+//menu toggle
 
-$(document).ready(function(){
+$(document).ready(function () {
+  $(".menu-toggle").click(function () {
+    //set distance from header
 
-	$('.menu-toggle').click(function(){
+    headerHeight();
 
-		//set distance from header
+    $("header nav:nth-of-type(2)").toggleClass("active");
 
-		headerHeight();
+    //determine if icon is active
 
-		$('header nav:nth-of-type(2)').toggleClass('active');
+    if ($(".fa-bars").hasClass("activate")) {
+      $(".fa-bars").removeClass("activate");
 
-		//determine if icon is active
+      $(".fa-bars").addClass("deactivate");
+    } else if ($(".fa-bars").hasClass("deactivate")) {
+      $(".fa-bars").removeClass("deactivate");
 
-		if ($('.fa-bars').hasClass('activate')) {
+      $(".fa-bars").addClass("activate");
+    } else {
+      $(".fa-bars").addClass("deactivate");
+    }
 
-			$('.fa-bars').removeClass('activate');
+    if ($(".fa-times").hasClass("activate")) {
+      $(".fa-times").removeClass("activate");
 
-			$('.fa-bars').addClass('deactivate');			
+      $(".fa-times").addClass("deactivate");
+    } else if ($(".fa-times").hasClass("deactivate")) {
+      $(".fa-times").removeClass("deactivate");
 
-		} else if ($('.fa-bars').hasClass('deactivate')) {
+      $(".fa-times").addClass("activate");
+    } else {
+      $(".fa-times").addClass("activate");
+    }
+  });
 
-			$('.fa-bars').removeClass('deactivate');
+  $("ul li.sub-menu").click(function () {
+    $(this).siblings().removeClass("active");
 
-			$('.fa-bars').addClass('activate');						
-
-		} else {
-
-			$('.fa-bars').addClass('deactivate');						
-
-		}
-
-		if ($('.fa-times').hasClass('activate')) {
-
-			$('.fa-times').removeClass('activate');
-
-			$('.fa-times').addClass('deactivate');			
-
-		} else if ($('.fa-times').hasClass('deactivate')) {
-
-			$('.fa-times').removeClass('deactivate');
-
-			$('.fa-times').addClass('activate');						
-
-		} else {
-
-			$('.fa-times').addClass('activate');						
-
-		}
-
-	})
-
-	$('ul li.sub-menu').click(function(){
-
-		$(this).siblings().removeClass('active');
-
-		$(this).toggleClass('active');
-
-	})
-
-})
+    $(this).toggleClass("active");
+  });
+});
 
 //go-top link behaviour
 
-$(".go-top").each(function(){
+$(".go-top").each(function () {
+  var gt = $(this);
 
-	var gt = $(this);
+  var scrollTop = 0;
 
-	var scrollTop = 0;
+  gt.hide();
 
-	gt.hide();
+  $(window).scroll(function () {
+    scrollTop = $(window).scrollTop();
 
-	$(window).scroll(function(){
+    if (scrollTop >= 170) gt.fadeIn();
+    else gt.fadeOut();
+  });
 
-		scrollTop = $(window).scrollTop();
-
-		if(scrollTop >= 170) gt.fadeIn();
-
-		else gt.fadeOut();
-
-	});
-
-
-
-	$(window).bind("resize load", function(){
-
-		if($(window).height() < $("body").height() && scrollTop >= 170) gt.fadeIn();
-
-		else gt.fadeOut();
-
-	});
-
+  $(window).bind("resize load", function () {
+    if ($(window).height() < $("body").height() && scrollTop >= 170)
+      gt.fadeIn();
+    else gt.fadeOut();
+  });
 });
-
-
 
 //fancy borders on images
 
-$("footer .widget_photos img").not(".content .testimonial img, .hp-services img, .logo, h3 img, button img, .product-meta img, .img-border img").each(function(){
+$("footer .widget_photos img")
+  .not(
+    ".content .testimonial img, .hp-services img, .logo, h3 img, button img, .product-meta img, .img-border img"
+  )
+  .each(function () {
+    var i = $(this);
 
-	var i = $(this);
+    i.wrap('<span class="img-border"></span>');
 
-	i.wrap('<span class="img-border"></span>');
+    if (i.hasClass("alignleft")) {
+      i.removeClass("alignleft");
 
-	if(i.hasClass("alignleft")) {
+      i.parent().addClass("alignleft");
+    }
+  });
 
-		i.removeClass("alignleft");
+function WpMessage(e) {
 
-		i.parent().addClass("alignleft");
+  const wpmessage = `"¡Hola! Estoy interesado en sus servicios de evaluación de integridad del talento humano. ¿Podrían proporcionarme más información?" `;
 
-	}
+  const url = `https://api.whatsapp.com/send?phone=593995527670&text=${wpmessage}&source=&data=`;
 
-});
-
-
-
+  const win = window.open(url, "_blank");
+  win.focus();
+	e.preventDefault();
+}
