@@ -76,19 +76,6 @@ export function Navigation({ reportsAccessUrl }: NavigationProps) {
           )}
         </li>
 
-        {reportsAccessUrl && (
-          <li>
-            <a
-              href={reportsAccessUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 text-sm font-semibold text-[#2D2D2D] hover:text-[#F78F1E] transition-colors duration-150"
-            >
-              Acceso Informes
-            </a>
-          </li>
-        )}
-
         <li className="ml-3">
           <Link
             href="/contacto"
@@ -197,20 +184,6 @@ export function MobileMenu({ reportsAccessUrl }: MobileMenuProps) {
                 </ul>
               )}
             </li>
-
-            {reportsAccessUrl && (
-              <li>
-                <a
-                  href={reportsAccessUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setOpen(false)}
-                  className="block px-4 py-3 rounded-xl text-sm font-semibold text-[#2D2D2D] hover:bg-[#F9F9F7] hover:text-[#032D51] transition-colors"
-                >
-                  Acceso Informes
-                </a>
-              </li>
-            )}
 
             <li className="pt-3">
               <Link

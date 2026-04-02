@@ -6,6 +6,8 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { getSiteSettings } from '@/lib/sanity/queries'
 import { SanityLive } from '@/lib/sanity/live'
+import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
+import { PageTransitionOverlay } from '@/components/providers/PageTransitionOverlay'
 import type { SiteSettingsData } from '@/lib/sanity/types'
 
 const montserrat = Montserrat({
@@ -96,11 +98,15 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
 
-        <Header siteSettings={siteSettings} />
+        <PageTransitionOverlay />
 
-        <main id="main-content">{children}</main>
+        <SmoothScrollProvider>
+          <Header siteSettings={siteSettings} />
 
-        <Footer siteSettings={siteSettings} />
+          <main id="main-content">{children}</main>
+
+          <Footer siteSettings={siteSettings} />
+        </SmoothScrollProvider>
         <SanityLive />
 
         {siteSettings?.googleAnalyticsId && (

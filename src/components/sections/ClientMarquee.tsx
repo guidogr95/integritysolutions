@@ -37,7 +37,7 @@ export function ClientMarquee({ heading, clients }: ClientMarqueeProps) {
           aria-label="Logos de clientes"
         >
           {items.map((client, i) => {
-            const logoUrl = urlForImage(client.logo).width(160).height(70).url()
+            const logoUrl = urlForImage(client.logo).width(200).height(88).url()
             return (
               <li
                 key={`${client._id}-${i}`}
@@ -55,18 +55,18 @@ export function ClientMarquee({ heading, clients }: ClientMarqueeProps) {
                     <Image
                       src={logoUrl}
                       alt={client.name}
-                      width={160}
-                      height={64}
-                      className="h-14 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                      width={200}
+                      height={80}
+                      className="h-[70px] w-auto object-contain grayscale hover:grayscale-0 transition-all duration-300"
                     />
                   </a>
                 ) : (
                   <Image
                     src={logoUrl}
                     alt={client.name}
-                    width={160}
-                    height={64}
-                    className="h-14 w-auto object-contain grayscale opacity-50"
+                    width={200}
+                    height={80}
+                    className="h-[70px] w-auto object-contain grayscale opacity-50"
                   />
                 )}
               </li>

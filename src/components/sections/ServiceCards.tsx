@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { urlForImage } from '@/lib/sanity/image'
+import { FadeInSection, StaggerContainer, StaggerItem } from '@/components/ui/Motion'
 import type { ServiceListItem } from '@/lib/sanity/types'
 
 interface ServiceCardsProps {
@@ -15,7 +16,8 @@ export function ServiceCards({ heading, services }: ServiceCardsProps) {
     <section id="servicios" aria-label="Nuestros servicios" className="py-24 lg:py-32 bg-white">
       <Container>
         {/* Header */}
-        <header className="mb-14">
+        <FadeInSection y={20}>
+          <header className="mb-14">
           <div className="flex items-center gap-3 mb-4">
             <div aria-hidden className="w-8 h-[2px] bg-[#F78F1E] shrink-0" />
             <span className="text-[#F78F1E] text-xs font-bold uppercase tracking-[0.22em]">
@@ -47,19 +49,20 @@ export function ServiceCards({ heading, services }: ServiceCardsProps) {
               </Link>
             ))}
           </div>
-        </header>
+          </header>
+        </FadeInSection>
 
         {/* 2×2 grid of numbered dark cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5" staggerDelay={0.1} initialDelay={0.05}>
           {services.map((service, index) => {
             const imageUrl = service.cardImage
               ? urlForImage(service.cardImage).width(720).height(540).quality(85).url()
               : `https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=720&q=80`
 
             return (
-              <article
-                key={service._id}
-                className="group relative overflow-hidden rounded-2xl bg-[#032D51] min-h-[320px] lg:min-h-[360px]"
+              <StaggerItem key={service._id}>
+                <article
+                  className="group relative overflow-hidden rounded-2xl bg-[#032D51] min-h-[320px] lg:min-h-[360px]"
               >
                 {/* Background image */}
                 <Image
@@ -106,10 +109,11 @@ export function ServiceCards({ heading, services }: ServiceCardsProps) {
                     </Link>
                   </div>
                 </div>
-              </article>
+                </article>
+              </StaggerItem>
             )
           })}
-        </div>
+        </StaggerContainer>
       </Container>
     </section>
   )

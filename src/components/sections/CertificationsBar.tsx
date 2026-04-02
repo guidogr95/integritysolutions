@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { urlForImage } from '@/lib/sanity/image'
+import { FadeInSection, StaggerContainer, StaggerItem } from '@/components/ui/Motion'
 import type { CertificationLogoData } from '@/lib/sanity/types'
 
 interface CertificationsBarProps {
@@ -28,13 +29,16 @@ export function CertificationsBar({
       className="py-12 lg:py-16 bg-white border-y border-[#E8E8E6]"
     >
       <Container>
-        <p className="text-center font-heading font-bold text-[#A6A6A6] text-xs uppercase tracking-[0.2em] mb-10">
-          {heading}
-        </p>
+        <FadeInSection y={16}>
+          <p className="text-center font-heading font-bold text-[#A6A6A6] text-xs uppercase tracking-[0.2em] mb-10">
+            {heading}
+          </p>
+        </FadeInSection>
 
-        <ul
-          role="list"
+        <StaggerContainer
           className="grid grid-cols-2 sm:grid-cols-4 gap-4 lg:gap-6"
+          staggerDelay={0.07}
+          initialDelay={0.1}
         >
           {items.map((cert) => {
             const imageUrl =
@@ -66,7 +70,7 @@ export function CertificationsBar({
             )
 
             return (
-              <li key={cert._key}>
+              <StaggerItem key={cert._key} className="list-none">
                 {cert.url ? (
                   <a
                     href={cert.url}
@@ -82,10 +86,10 @@ export function CertificationsBar({
                     {inner}
                   </div>
                 )}
-              </li>
+              </StaggerItem>
             )
           })}
-        </ul>
+        </StaggerContainer>
       </Container>
     </section>
   )

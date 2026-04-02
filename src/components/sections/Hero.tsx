@@ -1,9 +1,32 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { motion } from 'motion/react'
 import { Container } from '@/components/ui/Container'
 import { urlForImage } from '@/lib/sanity/image'
 import type { HeroData, SiteSettingsData } from '@/lib/sanity/types'
+
+// Shared expo-out ease
+const ease = [0.22, 1, 0.36, 1] as const
+
+// Staggered entrance: each child fades + slides up
+const heroVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 22 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease } },
+}
+
+// Stats strip slightly later
+const statsVariants = {
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease, delay: 0.85 } },
+}
 
 interface HeroProps {
   hero?: HeroData
@@ -15,8 +38,8 @@ export function Hero({ hero, siteSettings }: HeroProps) {
   const yearsExperience = new Date().getFullYear() - foundedYear
 
   const backgroundUrl = hero?.backgroundImage
-    ? urlForImage(hero.backgroundImage).width(1920).height(1080).quality(90).url()
-    : 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=85'
+    ? urlForImage(hero.backgroundImage).width(1920).height(1080).quality(95).url()
+    : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=95'
 
   const heading = hero?.heading ?? 'Integridad que\nconstruye confianza'
 
@@ -32,18 +55,25 @@ export function Hero({ hero, siteSettings }: HeroProps) {
       aria-label="Hero"
       className="relative min-h-[92vh] flex flex-col justify-center bg-[#032D51] overflow-hidden"
     >
-      {/* Background image — crisp, not washed out */}
-      <Image
-        src={backgroundUrl}
-        alt=""
-        aria-hidden
-        fill
-        priority
-        sizes="100vw"
-        quality={90}
-        className="object-cover object-center"
-        style={{ opacity: 0.45 }}
-      />
+      {/* Background image — animates in at natural opacity */}
+      <motion.div
+        className="absolute inset-0"
+        initial={{ opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <Image
+          src={backgroundUrl}
+          alt=""
+          aria-hidden
+          fill
+          priority
+          sizes="100vw"
+          quality={95}
+          className="object-cover object-center"
+          style={{ opacity: 0.42 }}
+        />
+      </motion.div>
 
       {/* Left-heavy gradient so text stays readable */}
       <div
@@ -56,31 +86,41 @@ export function Hero({ hero, siteSettings }: HeroProps) {
         className="absolute inset-0 bg-gradient-to-t from-[#032D51]/85 via-transparent to-transparent"
       />
 
-      {/* Content */}
+      {/* Content — staggered entrance */}
       <Container className="relative z-10 py-24 lg:py-32">
-        <div className="max-w-3xl">
+        <motion.div
+          className="max-w-3xl"
+          variants={heroVariants}
+          initial="hidden"
+          animate="visible"
+        >
           {/* Eyebrow */}
-          <div className="flex items-center gap-3 mb-8">
+          <motion.div variants={itemVariants} className="flex items-center gap-3 mb-8">
             <div aria-hidden className="w-8 h-[2px] bg-[#F78F1E] shrink-0" />
             <span className="text-[#F78F1E] text-xs font-bold uppercase tracking-[0.22em]">
               {hero?.subheading ?? 'Integrity Solutions® Ecuador'}
             </span>
-          </div>
+          </motion.div>
 
-          {/* Headline — short and powerful */}
+          {/* Headline — each line staggers independently */}
           <h1 className="font-heading font-extrabold text-white leading-[1.0] tracking-tight mb-6 text-5xl sm:text-6xl lg:text-7xl">
             {heading.split('\n').map((line, i) => (
-              <span key={i} className="block">{line}</span>
+              <motion.span key={i} variants={itemVariants} className="block">
+                {line}
+              </motion.span>
             ))}
           </h1>
 
-          {/* Subtext — one line maximum */}
-          <p className="text-white/65 text-lg sm:text-xl leading-relaxed mb-10 max-w-lg">
+          {/* Subtext */}
+          <motion.p
+            variants={itemVariants}
+            className="text-white/65 text-lg sm:text-xl leading-relaxed mb-10 max-w-lg"
+          >
             {subtext}
-          </p>
+          </motion.p>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
             <Link
               href="/contacto"
               className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-heading font-bold text-sm bg-[#F78F1E] text-white hover:bg-[#E4821A] transition-colors duration-200"
@@ -94,12 +134,17 @@ export function Hero({ hero, siteSettings }: HeroProps) {
             >
               {ctaText}
             </Link>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Container>
 
       {/* Micro-stats strip at bottom */}
-      <div className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10">
+      <motion.div
+        variants={statsVariants}
+        initial="hidden"
+        animate="visible"
+        className="absolute bottom-0 left-0 right-0 z-10 border-t border-white/10"
+      >
         <Container>
           <ul
             role="list"
@@ -122,7 +167,8 @@ export function Hero({ hero, siteSettings }: HeroProps) {
             </li>
           </ul>
         </Container>
-      </div>
+      </motion.div>
     </section>
   )
 }
+

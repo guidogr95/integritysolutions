@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Container } from '@/components/ui/Container'
 import { urlForImage } from '@/lib/sanity/image'
+import { FadeInSection } from '@/components/ui/Motion'
 import type { HomepageData } from '@/lib/sanity/types'
 
 type Props = Pick<HomepageData, 'aboutHeading' | 'aboutText' | 'aboutImage'>
@@ -26,7 +27,7 @@ export function AboutSection({ aboutHeading, aboutText, aboutImage }: Props) {
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
           {/* Text — left */}
-          <div>
+          <FadeInSection>
             <div className="flex items-center gap-3 mb-6">
               <div aria-hidden className="w-8 h-[2px] bg-[#F78F1E] shrink-0" />
               <span className="text-[#F78F1E] text-xs font-bold uppercase tracking-[0.22em]">
@@ -61,10 +62,10 @@ export function AboutSection({ aboutHeading, aboutText, aboutImage }: Props) {
                 <p className="text-[#6B6B6B] text-sm mt-1.5">Ecuatoriana</p>
               </div>
             </div>
-          </div>
+          </FadeInSection>
 
           {/* Image — right */}
-          <div className="relative">
+          <FadeInSection delay={0.15} y={20} className="relative">
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] shadow-2xl shadow-[#032D51]/15">
               <Image
                 src={imageUrl}
@@ -79,7 +80,7 @@ export function AboutSection({ aboutHeading, aboutText, aboutImage }: Props) {
               aria-hidden
               className="absolute -bottom-4 -right-4 w-32 h-32 rounded-2xl bg-[#F78F1E]/10 -z-10"
             />
-          </div>
+          </FadeInSection>
         </div>
       </Container>
     </section>
