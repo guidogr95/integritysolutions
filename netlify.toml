@@ -2,5 +2,12 @@
   command = "npm run build"
   publish = ".next"
 
+# NEXT_PUBLIC_* variables are intentionally bundled into the client-side JS
+# bundle by Next.js — that is the explicit purpose of the NEXT_PUBLIC_ prefix.
+# Netlify's secrets scanner would otherwise false-positive on these values
+# appearing in build output and in common words like "production" in repo files.
+[build.environment]
+  SECRETS_SCAN_OMIT_KEYS = "NEXT_PUBLIC_SANITY_PROJECT_ID,NEXT_PUBLIC_SANITY_DATASET,NEXT_PUBLIC_SANITY_API_READ_TOKEN"
+
 [[plugins]]
   package = "@netlify/plugin-nextjs"
