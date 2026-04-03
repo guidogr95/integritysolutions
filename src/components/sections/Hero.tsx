@@ -37,9 +37,10 @@ export function Hero({ hero, siteSettings }: HeroProps) {
   const foundedYear = siteSettings?.companyFoundedYear ?? 2003
   const yearsExperience = new Date().getFullYear() - foundedYear
 
-  const backgroundUrl = hero?.backgroundImage
-    ? urlForImage(hero.backgroundImage).width(1920).height(1080).quality(95).url()
-    : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=95'
+  // TODO: upload a proper hero image in Sanity Studio (Homepage → Hero → Background Image).
+  // The current Sanity asset is only 192×197px and renders blurry when stretched.
+  // Until then, the high-res Unsplash photo is used as the background.
+  const backgroundUrl = 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop&auto=format&q=95'
 
   const heading = hero?.heading ?? 'Integridad que\nconstruye confianza'
 
@@ -71,7 +72,7 @@ export function Hero({ hero, siteSettings }: HeroProps) {
           sizes="100vw"
           quality={95}
           className="object-cover object-center"
-          style={{ opacity: 0.42 }}
+          style={{ opacity: 0.55 }}
         />
       </motion.div>
 

@@ -38,7 +38,7 @@ export default defineType({
       name: 'email',
       title: 'Email',
       type: 'string',
-      initialValue: 'info@integritysolutions.ec',
+      initialValue: 'vguevara@integritysolutions.ec',
     }),
     defineField({
       name: 'whatsappNumber',

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: '%s | Integrity Solutions',
   },
   description:
-    'Empresa ecuatoriana especializada en evaluación de integridad del talento humano mediante polígrafo, Integrity Report, AMITAI y Seguridad Vial.',
+    'Empresa ecuatoriana especializada en evaluación de integridad del talento humano mediante polígrafo, Integrity Report y AMITAI® Honestidad.',
   keywords: [
     'policiesógrafo Ecuador',
     'pruebas poligráficas Quito',
@@ -37,7 +37,6 @@ export const metadata: Metadata = {
     'verificación de antecedentes Ecuador',
     'Integrity Report',
     'evaluación de integridad',
-    'seguridad vial laboral',
     'AMITAI honestidad',
     'estudios de seguridad personal',
     'investigación de fraudes',
@@ -74,7 +73,7 @@ function buildOrganizationJsonLd(siteSettings: SiteSettingsData | null) {
     name: siteSettings?.companyName ?? 'Integrity Solutions',
     url: 'https://www.integritysolutions.ec',
     logo: 'https://www.integritysolutions.ec/logo.svg',
-    email: siteSettings?.email ?? 'info@integritysolutions.ec',
+    email: siteSettings?.email ?? 'vguevara@integritysolutions.ec',
     telephone: siteSettings?.whatsappNumber ? `+${siteSettings.whatsappNumber}` : '+593995527670',
     address: offices.length > 0 ? offices : undefined,
     openingHours: siteSettings?.businessHours,

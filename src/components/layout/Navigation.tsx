@@ -9,7 +9,6 @@ const services = [
   { label: 'Integrity Report', href: '/servicios/integrity-report' },
   { label: 'Polígrafo', href: '/servicios/poligrafo' },
   { label: 'AMITAI® Honestidad', href: '/servicios/amitai-honestidad' },
-  { label: 'Seguridad Vial', href: '/servicios/seguridad-vial' },
 ]
 
 interface NavigationProps {

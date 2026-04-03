@@ -80,7 +80,7 @@ const documents = [
     _type: 'siteSettings',
     companyName: 'Integrity Solutions',
     companyFoundedYear: 2013,
-    email: 'info@integritysolutions.ec',
+    email: 'vguevara@integritysolutions.ec',
     whatsappNumber: '593995527670',
     offices: [
       {
@@ -97,8 +97,8 @@ const documents = [
         _type: 'officeLocation',
         _key: 'guayaquil',
         city: 'Guayaquil',
-        addressLine1: 'Av. Francisco de Orellana MZ 101 Solar 2',
-        addressLine2: 'y Av. Agustín Freire',
+        addressLine1: 'Edificio Ágora XXI, Oficina 612',
+        addressLine2: '',
         phones: ['+593 995 527 670'],
         mapEmbedUrl:
           'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3987.017800971279!2d-79.90222068524486!3d-2.14687009843509!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMsKwMDgnNDguNyJTIDc5wrA1NCcwMC4xIlc!5e0!3m2!1ses!2sec!4v1567113715973!5m2!1ses!2sec',
@@ -123,7 +123,7 @@ const documents = [
       _type: 'seo',
       metaTitle: 'Integrity Solutions Ecuador | Integridad del Talento Humano',
       metaDescription:
-        'Empresa ecuatoriana experta en evaluación de integridad del talento humano. Polígrafo, Integrity Report, AMITAI® Honestidad y Seguridad Vial en Quito y Guayaquil.',
+        'Empresa ecuatoriana experta en evaluación de integridad del talento humano. Polígrafo, Integrity Report y AMITAI® Honestidad en Quito y Guayaquil.',
     },
   },
 
@@ -160,7 +160,7 @@ const documents = [
     values: 'Integridad · Profesionalismo · Confidencialidad · Precisión · Innovación',
     servicesHeading: '¿Qué hacemos?',
     servicesSubheading:
-      'Proveemos servicios enfocados en la seguridad vial y verificación de la integridad del talento humano.',
+      'Proveemos servicios de verificación de la integridad del talento humano.',
     ctaBanner: {
       _type: 'ctaBanner',
       heading: '¿Listo para llevar tu empresa al siguiente nivel?',
@@ -171,7 +171,7 @@ const documents = [
       _type: 'seo',
       metaTitle: 'Integrity Solutions | Evaluación de Integridad del Talento Humano en Ecuador',
       metaDescription:
-        'Empresa ecuatoriana líder en evaluación de integridad laboral. Ofrecemos polígrafo, verificación de antecedentes, test AMITAI® y capacitación en seguridad vial.',
+        'Empresa ecuatoriana líder en evaluación de integridad laboral. Ofrecemos polígrafo, verificación de antecedentes y test AMITAI® Honestidad en Quito y Guayaquil.',
     },
   },
 

@@ -61,7 +61,7 @@ export async function submitContactForm(
     const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from: 'Formulario Web <noreply@integritysolutions.ec>',
-      to: 'info@integritysolutions.ec',
+      to: 'vguevara@integritysolutions.ec',
       replyTo: email,
       subject: `[Formulario] ${subject} — ${name}`,
       text: `Nombre: ${name}\nTeléfono: ${phone}\nEmail: ${email}\nAsunto: ${subject}\n\n${message}`,

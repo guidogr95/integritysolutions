@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
 import { urlForImage } from '@/lib/sanity/image'
-import { FadeInSection, StaggerContainer, StaggerItem } from '@/components/ui/Motion'
+import { FadeInSection } from '@/components/ui/Motion'
 import type { ServiceListItem } from '@/lib/sanity/types'
 
 interface ServiceCardsProps {
@@ -36,7 +36,7 @@ export function ServiceCards({ heading, services }: ServiceCardsProps) {
               { label: 'Test de integridad laboral',   href: '/servicios/amitai-honestidad' },
               { label: 'Investigación de fraudes',     href: '/servicios/poligrafo' },
               { label: 'AMITAI® Honestidad',           href: '/servicios/amitai-honestidad' },
-              { label: 'Seguridad Vial',               href: '/servicios/seguridad-vial' },
+
               { label: 'Pre empleo',                   href: '/servicios/integrity-report' },
               { label: 'Fuga de información',          href: '/servicios/poligrafo' },
             ] as const).map(({ label, href }) => (
@@ -52,68 +52,63 @@ export function ServiceCards({ heading, services }: ServiceCardsProps) {
           </header>
         </FadeInSection>
 
-        {/* 2×2 grid of numbered dark cards */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-5" staggerDelay={0.1} initialDelay={0.05}>
-          {services.map((service, index) => {
+        {/* Asymmetric layout: featured card left (tall), two cards stacked right */}
+        <div className="flex flex-col sm:flex-row gap-5">
+          {/* Featured card — stretches to match the right column's total height */}
+          {services[0] && (() => {
+            const service = services[0]
             const imageUrl = service.cardImage
-              ? urlForImage(service.cardImage).width(720).height(540).quality(85).url()
+              ? urlForImage(service.cardImage).width(720).height(900).quality(85).url()
               : `https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=720&q=80`
-
             return (
-              <StaggerItem key={service._id}>
-                <article
-                  className="group relative overflow-hidden rounded-2xl bg-[#032D51] min-h-[320px] lg:min-h-[360px]"
-              >
-                {/* Background image */}
-                <Image
-                  src={imageUrl}
-                  alt=""
-                  aria-hidden
-                  fill
-                  className="object-cover transition-all duration-700 group-hover:scale-105"
-                  style={{ opacity: 0.3 }}
-                  sizes="(max-width: 640px) 100vw, 50vw"
-                />
-
-                {/* Gradient */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 bg-gradient-to-t from-[#032D51] via-[#032D51]/50 to-transparent group-hover:from-[#032D51] group-hover:via-[#032D51]/60 transition-all duration-500"
-                />
-
-                {/* Content */}
-                <div className="relative z-10 p-8 lg:p-9 flex flex-col justify-between h-full">
-                  {/* Service number */}
-                  <span
-                    aria-hidden
-                    className="font-heading font-extrabold text-white/15 text-6xl leading-none select-none"
-                  >
-                    {String(index + 1).padStart(2, '0')}
-                  </span>
-
-                  <div className="mt-auto">
-                    <h3 className="font-heading font-extrabold text-white text-2xl mb-2 leading-tight">
-                      {service.title}
-                    </h3>
-                    {service.shortDescription && (
-                      <p className="text-white/60 text-sm leading-relaxed mb-6">
-                        {service.shortDescription}
-                      </p>
-                    )}
-                    <Link
-                      href={`/servicios/${service.slug.current}`}
-                      className="inline-flex items-center gap-2 text-sm font-bold text-white border-b border-white/25 pb-0.5 hover:text-[#F78F1E] hover:border-[#F78F1E] transition-colors duration-200"
-                    >
-                      Conocer más
-                      <ArrowRight className="h-4 w-4" aria-hidden />
-                    </Link>
+              <FadeInSection key={service._id} className="sm:w-1/2" delay={0}>
+                <article className="group relative overflow-hidden rounded-2xl bg-[#032D51] min-h-[420px] h-full">
+                  <Image src={imageUrl} alt="" aria-hidden fill className="object-cover transition-all duration-700 group-hover:scale-105" style={{ opacity: 0.3 }} sizes="(max-width: 640px) 100vw, 50vw" />
+                  <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#032D51] via-[#032D51]/50 to-transparent group-hover:via-[#032D51]/60 transition-all duration-500" />
+                  <div className="relative z-10 p-8 lg:p-10 flex flex-col justify-between h-full">
+                    <span aria-hidden className="font-heading font-extrabold text-white/15 text-6xl leading-none select-none">01</span>
+                    <div className="mt-auto">
+                      <h3 className="font-heading font-extrabold text-white text-3xl mb-3 leading-tight">{service.title}</h3>
+                      {service.shortDescription && <p className="text-white/60 text-sm leading-relaxed mb-6">{service.shortDescription}</p>}
+                      <Link href={`/servicios/${service.slug.current}`} className="inline-flex items-center gap-2 text-sm font-bold text-white border-b border-white/25 pb-0.5 hover:text-[#F78F1E] hover:border-[#F78F1E] transition-colors duration-200">
+                        Conocer más <ArrowRight className="h-4 w-4" aria-hidden />
+                      </Link>
+                    </div>
                   </div>
-                </div>
                 </article>
-              </StaggerItem>
+              </FadeInSection>
             )
-          })}
-        </StaggerContainer>
+          })()}
+
+          {/* Right column — two cards stacked */}
+          {services.length > 1 && (
+            <div className="sm:w-1/2 flex flex-col gap-5">
+              {services.slice(1).map((service, i) => {
+                const imageUrl = service.cardImage
+                  ? urlForImage(service.cardImage).width(720).height(540).quality(85).url()
+                  : `https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=720&q=80`
+                return (
+                  <FadeInSection key={service._id} className="flex-1" delay={0.12 * (i + 1)}>
+                    <article className="group relative overflow-hidden rounded-2xl bg-[#032D51] min-h-[260px] h-full">
+                      <Image src={imageUrl} alt="" aria-hidden fill className="object-cover transition-all duration-700 group-hover:scale-105" style={{ opacity: 0.3 }} sizes="(max-width: 640px) 100vw, 50vw" />
+                      <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-[#032D51] via-[#032D51]/50 to-transparent group-hover:via-[#032D51]/60 transition-all duration-500" />
+                      <div className="relative z-10 p-8 lg:p-9 flex flex-col justify-between h-full">
+                        <span aria-hidden className="font-heading font-extrabold text-white/15 text-6xl leading-none select-none">{String(i + 2).padStart(2, '0')}</span>
+                        <div className="mt-auto">
+                          <h3 className="font-heading font-extrabold text-white text-2xl mb-2 leading-tight">{service.title}</h3>
+                          {service.shortDescription && <p className="text-white/60 text-sm leading-relaxed mb-6">{service.shortDescription}</p>}
+                          <Link href={`/servicios/${service.slug.current}`} className="inline-flex items-center gap-2 text-sm font-bold text-white border-b border-white/25 pb-0.5 hover:text-[#F78F1E] hover:border-[#F78F1E] transition-colors duration-200">
+                            Conocer más <ArrowRight className="h-4 w-4" aria-hidden />
+                          </Link>
+                        </div>
+                      </div>
+                    </article>
+                  </FadeInSection>
+                )
+              })}
+            </div>
+          )}
+        </div>
       </Container>
     </section>
   )
