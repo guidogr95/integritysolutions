@@ -73,14 +73,7 @@ export function MissionVisionValues({ mission, vision, values }: Props) {
               </div>
               <div>
                 <h3 className="font-heading font-extrabold text-[#032D51] text-2xl mb-3">Valores</h3>
-                <ul className="space-y-3">
-                  {valuesText.split('. ').filter(Boolean).map((v, i) => (
-                    <li key={i} className="text-[#6B6B6B] text-sm leading-relaxed flex items-start gap-2">
-                      <span aria-hidden className="mt-1.5 size-1.5 rounded-full bg-[#F78F1E] shrink-0" />
-                      {v.endsWith('.') ? v : v + '.'}
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-[#6B6B6B] text-base leading-relaxed">{valuesText}</p>
               </div>
               </article>
             </div>
