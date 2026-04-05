@@ -7,6 +7,9 @@ import officeLocation from './objects/officeLocation'
 import ctaBanner from './objects/ctaBanner'
 import trainingProgram from './objects/trainingProgram'
 import socialLink from './objects/socialLink'
+import testimonial from './objects/testimonial'
+import processStep from './objects/processStep'
+import faqItem from './objects/faqItem'
 import siteSettings from './documents/siteSettings'
 import homepage from './documents/homepage'
 import service from './documents/service'
@@ -24,6 +27,9 @@ export const schemaTypes = [
   ctaBanner,
   trainingProgram,
   socialLink,
+  testimonial,
+  processStep,
+  faqItem,
   // Documents
   siteSettings,
   homepage,

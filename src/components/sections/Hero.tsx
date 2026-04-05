@@ -42,10 +42,10 @@ export function Hero({ hero, siteSettings }: HeroProps) {
   // Until then, the high-res Unsplash photo is used as the background.
   const backgroundUrl = 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1920&h=1080&fit=crop&auto=format&q=95'
 
-  const heading = hero?.heading ?? 'Integridad que\nconstruye confianza'
+  const heading = hero?.heading ?? 'Sepa con certeza\nquién trabaja\ncon usted'
 
   // Use only the first sentence of the description to keep hero tight
-  const rawDesc = hero?.description ?? 'Servicios certificados de evaluación de integridad del talento humano en Ecuador.'
+  const rawDesc = hero?.description ?? 'Evaluaciones certificadas de integridad del talento humano — respaldadas por APA, AIPP y ASIS. Más de una década protegiendo organizaciones ecuatorianas.'
   const subtext = rawDesc.includes('.') ? rawDesc.split('.')[0] + '.' : rawDesc
 
   const ctaText = hero?.ctaText ?? 'Conocer nuestros servicios'

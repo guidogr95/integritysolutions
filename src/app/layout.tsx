@@ -8,6 +8,7 @@ import { getSiteSettings } from '@/lib/sanity/queries'
 import { SanityLive } from '@/lib/sanity/live'
 import { SmoothScrollProvider } from '@/components/providers/SmoothScrollProvider'
 import { PageTransitionOverlay } from '@/components/providers/PageTransitionOverlay'
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton'
 import type { SiteSettingsData } from '@/lib/sanity/types'
 
 const montserrat = Montserrat({
@@ -86,7 +87,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const orgJsonLd = buildOrganizationJsonLd(siteSettings)
 
   return (
-    <html lang="es" className={`${montserrat.variable} ${dmSans.variable}`}>
+    <html data-scroll-behavior="smooth" lang="es" className={`${montserrat.variable} ${dmSans.variable}`}>
       <body className="bg-white text-[#3F3F3F]">
         <a href="#main-content" className="skip-to-content">
           Saltar al contenido principal
@@ -107,6 +108,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <Footer siteSettings={siteSettings} />
         </SmoothScrollProvider>
         <SanityLive />
+        <WhatsAppButton phoneNumber={siteSettings?.whatsappNumber} />
 
         {siteSettings?.googleAnalyticsId && (
           <>

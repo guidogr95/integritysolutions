@@ -114,6 +114,25 @@ const homepageQuery = groq`*[_type == "homepage"][0] {
   clientsHeading,
   servicesHeading,
   ${ctaBannerFragment},
+  testimonials[] {
+    _key,
+    quote,
+    authorName,
+    authorRole,
+    authorCompany,
+    isAnonymized
+  },
+  processSteps[] {
+    _key,
+    stepNumber,
+    title,
+    description
+  },
+  faqItems[] {
+    _key,
+    question,
+    answer
+  },
   ${seoFragment}
 }`
 

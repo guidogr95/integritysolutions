@@ -14,8 +14,8 @@ export function AboutSection({ aboutHeading, aboutText, aboutImage }: Props) {
   const paragraphs = aboutText
     ? aboutText.split('\n\n').filter(Boolean)
     : [
-        'Desde hace más de una década, estamos comprometidos con el desarrollo de la Ética Organizacional. Contamos con un equipo de consultores con experiencia y altamente motivados para el desarrollo de soluciones de acuerdo a las necesidades de nuestros clientes.',
-        'Esta experiencia combinada con la alta exigencia de nuestros clientes del sector privado y público, se fusiona con el objetivo de ofrecer servicios vanguardistas, innovadores y de calidad sustentados en un genuino interés por las personas.',
+        'Somos la empresa ecuatoriana de referencia en evaluación de integridad del talento humano. Con más de 18 años de trayectoria, ayudamos a organizaciones del sector privado y público a tomar decisiones de contratación fundamentadas, prevenir el fraude interno y reducir los riesgos derivados del talento humano.',
+        'Nuestros profesionales cuentan con certificaciones internacionales de la American Polygraph Association (APA), la Asociación Internacional de Profesionales en Poligrafía (AIPP) y ASIS International — los mismos estándares que exigen las empresas más exigentes del mundo.',
       ]
 
   return (
@@ -50,16 +50,16 @@ export function AboutSection({ aboutHeading, aboutText, aboutImage }: Props) {
             {/* Quick metrics */}
             <div className="mt-10 pt-10 border-t border-[#E8E8E6] grid grid-cols-3 gap-6">
               <div>
-                <p className="font-heading font-extrabold text-[#032D51] text-3xl leading-none">12+</p>
-                <p className="text-[#6B6B6B] text-sm mt-1.5">Años activos</p>
+                <p className="font-heading font-extrabold text-[#032D51] text-3xl leading-none">18+</p>
+                <p className="text-[#6B6B6B] text-sm mt-1.5">Años de trayectoria</p>
               </div>
               <div>
                 <p className="font-heading font-extrabold text-[#032D51] text-3xl leading-none">4</p>
-                <p className="text-[#6B6B6B] text-sm mt-1.5">Líneas de servicio</p>
+                <p className="text-[#6B6B6B] text-sm mt-1.5">Servicios especializados</p>
               </div>
               <div>
-                <p className="font-heading font-extrabold text-[#032D51] text-3xl leading-none">100%</p>
-                <p className="text-[#6B6B6B] text-sm mt-1.5">Ecuatoriana</p>
+                <p className="font-heading font-extrabold text-[#032D51] text-3xl leading-none">150+</p>
+                <p className="text-[#6B6B6B] text-sm mt-1.5">Clientes corporativos</p>
               </div>
             </div>
           </FadeInSection>

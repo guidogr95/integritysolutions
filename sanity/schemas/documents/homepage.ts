@@ -97,6 +97,33 @@ export default defineType({
       type: 'ctaBanner',
     }),
 
+    // Testimonials
+    defineField({
+      name: 'testimonials',
+      title: 'Testimonios',
+      type: 'array',
+      of: [{ type: 'testimonial' }],
+      validation: (Rule) => Rule.max(6),
+    }),
+
+    // Process Steps
+    defineField({
+      name: 'processSteps',
+      title: 'Pasos del Proceso',
+      type: 'array',
+      of: [{ type: 'processStep' }],
+      validation: (Rule) => Rule.max(6),
+    }),
+
+    // FAQ
+    defineField({
+      name: 'faqItems',
+      title: 'Preguntas Frecuentes',
+      type: 'array',
+      of: [{ type: 'faqItem' }],
+      validation: (Rule) => Rule.max(12),
+    }),
+
     // SEO
     defineField({
       name: 'seo',

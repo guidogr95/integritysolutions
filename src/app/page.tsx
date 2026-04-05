@@ -10,6 +10,10 @@ import { ServiceCards } from '@/components/sections/ServiceCards'
 import { ClientMarquee } from '@/components/sections/ClientMarquee'
 import { CtaBanner } from '@/components/sections/CtaBanner'
 import { LocationMaps } from '@/components/sections/LocationMaps'
+import { TestimonialsSection } from '@/components/sections/TestimonialsSection'
+import { IndustriesSection } from '@/components/sections/IndustriesSection'
+import { HowWeWork } from '@/components/sections/HowWeWork'
+import { FaqSection } from '@/components/sections/FaqSection'
 
 export async function generateMetadata(): Promise<Metadata> {
   const [homepage, siteSettings] = await Promise.all([getHomepage(), getSiteSettings()])
@@ -62,6 +66,8 @@ export default async function HomePage() {
 
       <StatsCounter stats={homepage?.stats} />
 
+      <TestimonialsSection testimonials={homepage?.testimonials} />
+
       <MissionVisionValues
         mission={homepage?.mission}
         vision={homepage?.vision}
@@ -70,9 +76,15 @@ export default async function HomePage() {
 
       <ServiceCards heading={homepage?.servicesHeading} services={services} />
 
+      <IndustriesSection />
+
+      <HowWeWork steps={homepage?.processSteps} />
+
+      <FaqSection items={homepage?.faqItems} />
+
       <ClientMarquee heading={homepage?.clientsHeading} clients={clientLogos} />
 
-      <CtaBanner data={homepage?.ctaBanner} />
+      <CtaBanner data={homepage?.ctaBanner} whatsappNumber={siteSettings?.whatsappNumber} />
 
       <LocationMaps offices={siteSettings?.offices} />
     </>

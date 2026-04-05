@@ -8,13 +8,13 @@ type Props = Pick<HomepageData, 'mission' | 'vision' | 'values'>
 export function MissionVisionValues({ mission, vision, values }: Props) {
   const missionText =
     mission ??
-    'Verificar la integridad del talento humano, brindando servicios de poligrafía, estudios de seguridad personal, asesoría, consultoría e investigaciones en seguridad privada.'
+    'Proveer servicios de evaluación de integridad del talento humano de alta calidad, contribuyendo a la construcción de organizaciones éticas y confiables en Ecuador.'
 
   const visionText =
     vision ??
-    'Minimizar los riesgos relacionados con el talento humano, liderando el mercado con servicios profesionales, confiables y de calidad.'
+    'Ser la empresa líder en soluciones de integridad laboral en Ecuador y Latinoamérica, reconocida por nuestra excelencia, innovación y compromiso con la ética organizacional.'
 
-  const valuesText = values ?? 'Veracidad. Honestidad. Confianza. Compromiso.'
+  const valuesText = values ?? 'Integridad. Profesionalismo. Confidencialidad. Precisión. Innovación.'
 
   return (
     <section
@@ -73,7 +73,14 @@ export function MissionVisionValues({ mission, vision, values }: Props) {
               </div>
               <div>
                 <h3 className="font-heading font-extrabold text-[#032D51] text-2xl mb-3">Valores</h3>
-                <p className="text-[#6B6B6B] text-base leading-relaxed">{valuesText}</p>
+                <ul className="space-y-3">
+                  {valuesText.split('. ').filter(Boolean).map((v, i) => (
+                    <li key={i} className="text-[#6B6B6B] text-sm leading-relaxed flex items-start gap-2">
+                      <span aria-hidden className="mt-1.5 size-1.5 rounded-full bg-[#F78F1E] shrink-0" />
+                      {v.endsWith('.') ? v : v + '.'}
+                    </li>
+                  ))}
+                </ul>
               </div>
               </article>
             </div>

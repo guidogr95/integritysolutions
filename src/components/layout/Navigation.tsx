@@ -75,10 +75,16 @@ export function Navigation({ reportsAccessUrl }: NavigationProps) {
           )}
         </li>
 
-        <li className="ml-3">
+        <li className="ml-3 flex items-center gap-2">
           <Link
             href="/contacto"
-            className="px-5 py-2.5 rounded-lg text-sm font-bold bg-[#032D51] text-white hover:bg-[#1C4990] transition-colors duration-150"
+            className="px-4 py-2.5 rounded-lg text-sm font-bold bg-[#F78F1E] text-white hover:bg-[#e07e10] transition-colors duration-150"
+          >
+            Solicitar evaluación
+          </Link>
+          <Link
+            href="/contacto"
+            className="px-4 py-2.5 rounded-lg text-sm font-bold bg-[#032D51] text-white hover:bg-[#1C4990] transition-colors duration-150"
           >
             Contacto
           </Link>
@@ -184,7 +190,17 @@ export function MobileMenu({ reportsAccessUrl }: MobileMenuProps) {
               )}
             </li>
 
-            <li className="pt-3">
+            <li className="pt-2">
+              <Link
+                href="/contacto"
+                onClick={() => setOpen(false)}
+                className="block w-full text-center px-4 py-3 rounded-xl text-sm font-bold bg-[#F78F1E] text-white hover:bg-[#e07e10] transition-colors"
+              >
+                Solicitar evaluación
+              </Link>
+            </li>
+
+            <li className="pt-2">
               <Link
                 href="/contacto"
                 onClick={() => setOpen(false)}

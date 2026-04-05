@@ -10,9 +10,10 @@ interface StatsCounterProps {
 }
 
 const fallbackStats: Omit<StatData, '_key'>[] = [
-  { number: '50,000+', label: 'Reportes de integridad evaluados' },
-  { number: '7,500+', label: 'Pruebas de polígrafo aplicadas' },
-  { number: '150+', label: 'Clientes corporativos' },
+  { number: '50,000+', label: 'Evaluaciones de talento completadas' },
+  { number: '7,500+', label: 'Exámenes poligráficos realizados' },
+  { number: '150+', label: 'Empresas que confían en nosotros' },
+  { number: '18+', label: 'Años en el mercado' },
 ]
 
 // Parses a stat string like "50,000+" or "7,500+" or "100%" into its numeric value + suffix

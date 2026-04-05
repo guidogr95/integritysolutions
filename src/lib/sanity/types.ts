@@ -98,6 +98,32 @@ export interface SocialLinkData {
 }
 
 // ---------------------------------------------------------------------------
+// New content objects
+// ---------------------------------------------------------------------------
+
+export interface TestimonialData {
+  _key: string
+  quote: string
+  authorName?: string
+  authorRole?: string
+  authorCompany?: string
+  isAnonymized?: boolean
+}
+
+export interface ProcessStepData {
+  _key: string
+  stepNumber: number
+  title: string
+  description?: string
+}
+
+export interface FaqItemData {
+  _key: string
+  question: string
+  answer: string
+}
+
+// ---------------------------------------------------------------------------
 // Documents
 // ---------------------------------------------------------------------------
 
@@ -134,6 +160,9 @@ export interface HomepageData {
   clientsHeading?: string
   servicesHeading?: string
   ctaBanner?: CtaBannerData
+  testimonials?: TestimonialData[]
+  processSteps?: ProcessStepData[]
+  faqItems?: FaqItemData[]
   seo?: SeoData
 }
 
